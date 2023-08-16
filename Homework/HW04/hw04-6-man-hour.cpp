@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-#include <stdio.h>
-
 int main()
 {
     char Eidstr[11];
@@ -23,8 +21,9 @@ int main()
     printf("Employees ID = %s\n", Eidstr);
 
     int temp = 1, comma_count = 0;
-    int salary_int = (int)salary; 
+    int salary_int = (int)salary; // Extracting the integer part of the salary
 
+    // Count the number of digits in the integer part of the salary
     int temp_salary = salary_int;
     while (temp_salary > 0)
     {
@@ -37,6 +36,7 @@ int main()
         temp *= 10;
     }
     printf("Salary = U$ ");
+    i = 0; // Resetting the loop counter
     while (temp > 0)
     {
         printf("%d", salary_int / temp);
