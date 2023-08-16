@@ -1,27 +1,55 @@
 #include <stdio.h>
 
-int main() {
-    char employeeID[11];
-    int workingHours;
-    float salaryPerHour, salary;
+#include <stdio.h>
 
-    // Input employee data
-    printf("Input the Employees ID(Max. 10 chars): ");
-    scanf("%s", employeeID);
+int main()
+{
+    char Eidstr[11];
+    float WorkHr, S;
+    int i;
 
-    printf("Input the working hrs: ");
-    scanf("%d", &workingHours);
+    printf("Input the Employees ID(Max. 10 chars): \n");
+    scanf("%10s", Eidstr);
 
-    printf("Salary amount/hr: ");
-    scanf("%f", &salaryPerHour);
+    printf("Input the working hrs: \n");
+    scanf("%f", &WorkHr);
 
-    // Calculate salary
-    salary = workingHours * salaryPerHour;
+    printf("Salary amount/hr: \n");
+    scanf("%f", &S);
 
-    // Output result
+    float salary = WorkHr * S;
+
     printf("Expected Output:\n");
-    printf("Employees ID = %s\n", employeeID);
-    printf("Salary = U$ %.2f\n", salary);
+    printf("Employees ID = %s\n", Eidstr);
+
+    int temp = 1, comma_count = 0;
+    int salary_int = (int)salary; 
+
+    int temp_salary = salary_int;
+    while (temp_salary > 0)
+    {
+        temp_salary /= 10;
+        comma_count++;
+    }
+
+    for (i = 1; i < comma_count; i++)
+    {
+        temp *= 10;
+    }
+    printf("Salary = U$ ");
+    while (temp > 0)
+    {
+        printf("%d", salary_int / temp);
+        salary_int %= temp;
+        temp /= 10;
+        i++;
+
+        if (i < comma_count && i % 3 == 0)
+        {
+            printf(",");
+        }
+    }
+    printf(".00");
 
     return 0;
 }
